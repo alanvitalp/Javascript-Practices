@@ -20,31 +20,31 @@ function addLeadingZeroes(time) {
   return time < 10 ? `0${time}` : time;
 }
 
-function timer(segundos) {
-  const data = new Date(segundos * 1000);
+function timer(seconds) {
+  const data = new Date(seconds * 1000);
 
   return `${addLeadingZeroes(data.getMinutes())}:${addLeadingZeroes(data.getSeconds())}`;
 }
 
 
-function startTimer(argumento) {
+function startTimer(args) {
   document.addEventListener('click', e => {
     let el = e.target;
 
     if (el.classList.contains('start')) {
-      startTimer(argumento);
+      startTimer(args);
     }
   })
   clearInterval(clock);
   clock = setInterval(function() {
-    timing2[argumento]--;
-    time.innerHTML = timer(timing2[argumento]);
-    if(timing2[argumento] === 0) {
+    timing2[args]--;
+    time.innerHTML = timer(timing2[args]);
+    if(timing2[args] === 0) {
       beep();
       alert('TIME IS OVER');
-      startTimer(argumento);
-      resetTimer(argumento);
-      timing2[argumento] = TIMING[argumento];
+      startTimer(args);
+      resetTimer(args);
+      timing2[args] = TIMING[args];
       return clearInterval(clock);
     }
   }, 1000);
@@ -62,16 +62,16 @@ function stopTimer() {
   })
 }
 
-function resetTimer(argumento) {
+function resetTimer(args) {
   document.addEventListener('click', e => {
     let el = e.target;
 
     if (el.classList.contains('reset')) {
-      resetTimer(argumento);
+      resetTimer(args);
     }
   }) 
-  timing2[argumento] = TIMING[argumento];
-  time.innerHTML = timer(timing2[argumento]);
+  timing2[args] = TIMING[args];
+  time.innerHTML = timer(timing2[args]);
   time.classList.remove('paused');
   clearInterval(clock);
 }
@@ -83,7 +83,6 @@ function beep() {
 
 (function pomodoro () {
   stopTimer();
-  keybardShortcuts();
 
   document.addEventListener('click', e => {
     let el = e.target;
