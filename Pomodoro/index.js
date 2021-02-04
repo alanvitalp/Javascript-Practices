@@ -81,35 +81,6 @@ function beep() {
   snd.play();
 }
 
-
-function keybardShortcuts () {
-  document.onkeydown = keydown;
-
-  function keydown(evt) {
-    if (!evt) evt = event;
-    if (evt.altKey && evt.keyCode === 112) {
-      alert('alt');
-    }
-  }
-  
-  document.addEventListener('keypress', e => {
-    let el = e.keyCode;
-    console.log(el);
-    if (el === 18 && el === 112) {
-      return startTimer('pomodoro');
-    }
-
-    if (el === 18 && el === 83) {
-      console.log('qopw')
-      return startTimer('shortBreak');
-    }
-
-    if (el === 18 && el === 76) {
-      return startTimer('longBreak');
-    }
-  });
-}
-
 (function pomodoro () {
   stopTimer();
   keybardShortcuts();
