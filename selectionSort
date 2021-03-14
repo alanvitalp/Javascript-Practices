@@ -1,0 +1,22 @@
+const selectionSort = (arr) => {
+  let n = arr.length;
+
+  for (let i = 0; i < n; i++) {
+    let min = i;
+
+    for (let j = i + 1; j < n; i++) {
+      if (arr[i] > arr[j]) {
+        min = j;
+      }
+    }
+    if (min != i) {
+      let temp = arr[i];
+      arr[min] = temp;
+      arr[i] = arr[min];
+
+    }
+  }
+
+  return arr;
+}
+
